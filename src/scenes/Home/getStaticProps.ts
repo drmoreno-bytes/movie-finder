@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps } from 'next';
 
 export const getStaticProps: GetStaticProps = async () => {
     return {

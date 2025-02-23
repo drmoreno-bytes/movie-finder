@@ -1,4 +1,4 @@
-import { movieListSchema } from "./schema";
+import { movieResponseSchema } from './schema';
 
 type Props = {
     query: string;
@@ -12,8 +12,9 @@ export const getMoviesServer = async ({ query, page, type }: Props) => {
     const typeParam = type ? `&type=${type}` : '';
 
     const res = await fetch(
-        `http://www.omdbapi.com?api_key=${API_KEY}&s=${query}${pageParam}${typeParam}`
+        `http://www.omdbapi.com?apikey=${API_KEY}&s=${query}${pageParam}${typeParam}`
     );
     const rawResult = await res.json();
-    return movieListSchema.parse(rawResult);
+
+    return movieResponseSchema.parse(rawResult);
 };

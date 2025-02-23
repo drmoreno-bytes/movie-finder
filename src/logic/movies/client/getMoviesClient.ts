@@ -1,40 +1,65 @@
-import { MovieList } from "../schema";
+import { Movie } from '../schema';
 
-export type MovieListWithErrors = {
-    success: true;
-    data: MovieList;
-} | {
-    success: false;
-    error: {
-        status: number;
-        statusText: string;
-    }
+export type MovieListWithErrors =
+    | {
+          success: true;
+          data: {
+              search: Movie[];
+              totalResults: string;
+          };
+      }
+    | {
+          success: false;
+          error: string;
+      };
+
+type Props = {
+    query: string;
+    page?: number;
+    type?: string;
 };
 
-export const getMoviesClient = async (query: string, page?: number, type?: string): Promise<MovieListWithErrors> => {
+export const getMoviesClient = async ({
+    query,
+    page,
+    type,
+}: Props): Promise<MovieListWithErrors> => {
     try {
-        const response = await fetch(`/api/getMovies?query=${query}&page=${page}&type=${type}`);
-        if(!response.ok) {
+        const pageParam = page ? `&page=${page}` : '';
+        const typeParam = type ? `&type=${type}` : '';
+        const response = await fetch(
+            `/api/getMovies?query=${query}${pageParam}${typeParam}`
+        );
+
+        if (!response.ok) {
             return {
                 success: false,
-                error: {
-                    status: response.status,
-                    statusText: response.statusText,
-                }
+                error: response.statusText,
             };
         }
+
         const data = await response.json();
+
+        if (data.response?.toLowerCase() !== 'true') {
+            return {
+                success: false,
+                error: data.response.error,
+            };
+        }
+
+        const { search, totalResults } = data;
+
         return {
             success: true,
-            data,
+            data: {
+                search,
+                totalResults,
+            },
         };
     } catch {
         return {
             success: false,
-            error: {
-                status: 500,
-                statusText: 'Network Error',
-            }
+            error: 'Network Error',
         };
     }
 };
