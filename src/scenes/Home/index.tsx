@@ -1,11 +1,13 @@
 import Image from "next/image";
-
+import { Button } from 'primereact/button';
 
 export default function Home() {
  
     return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+        <div className="grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+
+         <Button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" label="Check" icon="pi pi-check"  />
           <Image
             className="dark:invert"
             src="/next.svg"
@@ -14,6 +16,7 @@ export default function Home() {
             height={38}
             priority
           />
+          <Button icon="pi pi-times" severity="danger" label="Cancel"/>
           <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
             <li className="mb-2">
               Get started by editing{" "}
