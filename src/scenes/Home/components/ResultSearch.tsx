@@ -20,6 +20,7 @@ export const ResultSearch = ({ status, movies, keyword }: Props) => {
                         Search results of{' '}
                         <span className="text-[#d80286]">{keyword}</span>
                     </p>
+                    <p>Count:</p>
                     <Movies movies={movies} />
                 </div>
             )}

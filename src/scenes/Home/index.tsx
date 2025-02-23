@@ -36,7 +36,7 @@ export default function Home() {
                     Millions of movies, TV shows and people to Discover. Explore
                     now.
                 </p>
-                <form className="" onSubmit={handleSubmit}>
+                <form className="pt-5" onSubmit={handleSubmit}>
                     <InputText
                         type="search"
                         onChange={handleChange}
