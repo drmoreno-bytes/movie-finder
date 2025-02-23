@@ -1,5 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { getMoviesServer } from '@/logic/movies/getMoviesServer';
+import { getMoviesServer } from '@/logic/movies/server/getMoviesServer';
 import { MovieOfListResponse } from '@/logic/movies/schema';
 import { parseAPIError } from '@/utils/parseAPIError';
 import type { NextApiRequest, NextApiResponse } from 'next';

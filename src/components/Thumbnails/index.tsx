@@ -18,8 +18,10 @@ export const Thumbnails = ({
     <li className="">
         <h3>{title}</h3>
         <p>{year}</p>
-        {poster !== 'N/A' && (
+        {poster !== 'N/A' ? (
             <Image src={poster} alt={title} width={width} height={height} />
+        ) : (
+            <p>No image available</p>
         )}
     </li>
 );

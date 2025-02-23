@@ -1,51 +1,34 @@
-import { useCallback, useState } from 'react';
-import { Movies } from './components/ListOfMovies';
-import { Movie } from '@/logic/movies/schema';
-import { getMoviesClient } from '@/logic/movies/client/getMoviesClient';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import { useMovies } from '@/logic/movies/hooks/useMovies';
+import { ResultSearch } from './components/ResultSearch';
+import { useSearch } from './hooks/useSearch';
 
 export default function Home() {
-    const [movies, setMovies] = useState<Movie[]>([]);
-    const [search, updateSearch] = useState('');
+    const { search, setSearch, error, isSearchValid } = useSearch();
+    const { movies, searchMovies, apiStatus, debouncedGetMovies } = useMovies({
+        search,
+    });
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        if (!isSearchValid(search)) {
+            return;
+        }
         searchMovies({ search });
     };
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newSearch = event.target.value;
-        updateSearch(newSearch);
-        //debouncedGetMovies(newSearch)
+        setSearch(newSearch);
+        if (!isSearchValid(newSearch)) {
+            return;
+        }
+        debouncedGetMovies(newSearch);
     };
 
-    const searchMovies = useCallback(async ({ search }: { search: string }) => {
-        //  if (search === previousSearch.current) return
-        // search es ''
-
-        try {
-            //setLoading(true)
-            // setError(null)
-            // previousSearch.current = search;
-            const newMovies = await getMoviesClient({ query: search });
-
-            if (newMovies.success) {
-                setMovies(newMovies.data.search);
-                return;
-            }
-
-            setMovies([]);
-        } catch {
-            // setError(e.message);
-        } finally {
-            // tanto en el try como en el catch
-            // setLoading(false);
-        }
-    }, []);
-
     return (
-        <div className="">
+        <div className="flex">
             <header>
                 <span>Welcome To</span>
                 <h1 className="">Movies Planet</h1>
@@ -63,9 +46,10 @@ export default function Home() {
                     />
                     <Button type="submit" label="Search" />
                 </form>
+                {error && <p className="text-red-500">{error}</p>}
             </header>
             <main>
-                <Movies movies={movies} />
+                {!error && <ResultSearch status={apiStatus} movies={movies} />}
             </main>
         </div>
     );
