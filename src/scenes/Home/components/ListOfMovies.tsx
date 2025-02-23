@@ -7,20 +7,24 @@ type Props = {
 
 const ListOfMovies = ({ movies }: Props) => {
     return (
-        <ul className="movies">
+        <ul className="grid list-none m-0 p-0 grid-cols-[repeat(auto-fit,minmax(200px,1fr))] w-ful gap-20">
             {movies.map((movie: Movie) => (
                 <Thumbnails
                     key={movie.id}
                     {...movie}
-                    width={400}
-                    height={400}
+                    width={250}
+                    height={350}
                 />
             ))}
         </ul>
     );
 };
 
-const NoMoviesResults = () => <p>No movies were found for this search</p>;
+const NoMoviesResults = () => (
+    <p className="text-[#da2f68] text-xl text-center">
+        No Results found for keyword. Try another One
+    </p>
+);
 
 export const Movies = ({ movies }: Props) => {
     const hasMovies = movies?.length > 0;

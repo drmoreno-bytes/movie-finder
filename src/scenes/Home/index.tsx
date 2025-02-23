@@ -28,10 +28,10 @@ export default function Home() {
     };
 
     return (
-        <div className="flex">
-            <header>
+        <div className="flex flex-col">
+            <header className="flex flex-col gap-2 items-center text-center relative max-w-[800px] mx-auto xl:pt-40 px-5 pt-8">
                 <span>Welcome To</span>
-                <h1 className="">Movies Planet</h1>
+                <h1 className="text-8xl">Movies Planet</h1>
                 <p>
                     Millions of movies, TV shows and people to Discover. Explore
                     now.
@@ -44,12 +44,27 @@ export default function Home() {
                         name="query"
                         placeholder="Search for a movie"
                     />
-                    <Button type="submit" label="Search" />
+                    <Button
+                        type="submit"
+                        label="Search"
+                        outlined
+                        className="text-[#da2f68] border-[#da2f68] ml-2 hover:bg-red-100"
+                    />
                 </form>
-                {error && <p className="text-red-500">{error}</p>}
+                {error && (
+                    <p className="text-[#da2f68] text-xl text-center pt-20">
+                        {error}
+                    </p>
+                )}
             </header>
             <main>
-                {!error && <ResultSearch status={apiStatus} movies={movies} />}
+                {!error && (
+                    <ResultSearch
+                        status={apiStatus}
+                        movies={movies}
+                        keyword={search}
+                    />
+                )}
             </main>
         </div>
     );
