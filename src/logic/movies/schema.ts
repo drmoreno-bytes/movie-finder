@@ -134,3 +134,4 @@ export const movieDetailResponseSchema = z
 export type MovieOfListResponse = z.infer<typeof movieResponseSchema>;
 export type MovieDetailResponse = z.infer<typeof movieDetailResponseSchema>;
 export type MovieDetail = z.infer<typeof movieDetailSchema>;
+export type Movie = z.infer<typeof movieSchema>;
