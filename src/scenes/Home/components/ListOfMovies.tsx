@@ -23,7 +23,7 @@ const ListOfMovies = ({ movies }: Props) => {
 };
 
 const NoMoviesResults = () => (
-    <p className="text-[#da2f68] text-xl text-center">
+    <p className="text-[#da2f68] text-xl text-center mt-10 w-full">
         No Results found for keyword. Try another One
     </p>
 );

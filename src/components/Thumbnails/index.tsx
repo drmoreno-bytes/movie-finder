@@ -35,7 +35,7 @@ export const Thumbnails = ({
                     alt="not found"
                     width={width}
                     height={height}
-                    className="rounded-md h-auto w-full object-contain block"
+                    className="rounded-md h-[324px] w-full object-cover block"
                 />
             )}
         </Link>

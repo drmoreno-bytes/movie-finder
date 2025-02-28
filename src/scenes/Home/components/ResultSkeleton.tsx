@@ -3,7 +3,7 @@ import { Skeleton } from 'primereact/skeleton';
 export const ResultSkeleton = () => {
     const skeletons = Array.from({ length: 12 }, (_, index) => (
         <li key={index} className="mb-4">
-            <Skeleton size="16rem" />
+            <Skeleton width="100%" height="324px" />
         </li>
     ));
 

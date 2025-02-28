@@ -13,17 +13,15 @@ type Props = {
 export const ResultSearch = ({ status, movies, keyword }: Props) => {
     return (
         <div className="max-w-6xl mx-auto mt-20 px-5">
-            {status === 'loading' && <ResultSkeleton />}
-            {status === 'success' && (
-                <div className="flex flex-col">
-                    <p className="text-2xl py-5">
-                        Search results of{' '}
-                        <span className="text-[#d80286]">{keyword}</span>
-                    </p>
-                    <p>Count:</p>
-                    <Movies movies={movies} />
-                </div>
-            )}
+            <div className="flex flex-col">
+                <p className="text-2xl py-5">
+                    Search results of{' '}
+                    <span className="text-[#d80286]">{keyword}</span>
+                </p>
+                <p>Count:</p>
+                {status === 'loading' && <ResultSkeleton />}
+                {status === 'success' && <Movies movies={movies} />}
+            </div>
         </div>
     );
 };
