@@ -1,18 +1,12 @@
 import { Thumbnails } from '@/components/Thumbnails';
 import { Movie } from '@/logic/movies/schema';
-import { useFavoriteActions } from '@/logic/movies/hooks/useFavoriteActions';
+import { Like } from '@/components/like/like';
 
 type Props = {
     movies: Movie[];
 };
 
 const ListOfMovies = ({ movies }: Props) => {
-    const { removeFavorite } = useFavoriteActions();
-
-    const handleFavorite = (id: string) => {
-        removeFavorite(id);
-    };
-
     return (
         <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
             {movies.map((movie: Movie) => (
@@ -22,7 +16,7 @@ const ListOfMovies = ({ movies }: Props) => {
                         {...movie}
                         width={216}
                         height={324}
-                        onFavoriteClick={handleFavorite}
+                        actions={<Like movie={movie} />}
                     />
                 </li>
             ))}

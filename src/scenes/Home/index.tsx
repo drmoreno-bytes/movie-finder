@@ -3,11 +3,9 @@ import { Button } from 'primereact/button';
 import { ResultSearch } from './components/ResultSearch';
 import { Dropdown } from 'primereact/dropdown';
 import { useSearchForm } from './hooks/useSearchForm';
-import { useAppSelector } from '@/store/hooks/useAppSelector';
-import { Badge } from 'primereact/badge';
-export default function Home() {
-    const favoriteMovies = useAppSelector((state) => state.favoriteMovies);
+import { MovieBadge } from './components/MovieBadge';
 
+export default function Home() {
     const {
         search,
         error,
@@ -55,19 +53,12 @@ export default function Home() {
                         className="text-[#da2f68] border-[#da2f68] ml-2 hover:bg-red-100"
                     />
                 </form>
+                <MovieBadge />
                 {error && (
                     <p className="text-[#da2f68] text-xl text-center pt-20">
                         {error}
                     </p>
                 )}
-
-                <span>
-                    <Badge
-                        className="mr-1"
-                        value={favoriteMovies?.length ?? 0}
-                    ></Badge>
-                    Favorite movies
-                </span>
             </header>
             <main>
                 {!error && (

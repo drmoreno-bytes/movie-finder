@@ -8,8 +8,6 @@ export type FavoriteMovie = {
     title: string;
     year: string;
     poster: string;
-    rating: string;
-    votes: string;
 };
 
 const initialState: FavoriteMovie[] = (() => {

@@ -3,15 +3,15 @@ import {
     deleteMoviesById,
     FavoriteMovie,
 } from '@/store/favoriteMovies/slice';
-import { useAppDispatch } from '@/store/hooks/useAppDisparch';
+import { useAppDispatch } from '@/store/hooks/useAppDispatch';
 
 export const useFavoriteActions = () => {
     const dispatchEvent = useAppDispatch();
-    const addFavourite = (movie: FavoriteMovie) => {
+    const addFavorite = (movie: FavoriteMovie) => {
         dispatchEvent(addMovies(movie));
     };
     const removeFavorite = (id: string) => {
         dispatchEvent(deleteMoviesById(id));
     };
-    return { addFavourite, removeFavorite };
+    return { addFavorite, removeFavorite };
 };
