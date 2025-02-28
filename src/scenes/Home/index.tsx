@@ -46,6 +46,7 @@ export default function Home() {
                         optionLabel="name"
                         placeholder="Select a type"
                         className="w-36"
+                        name="type"
                     />
                     <Button
                         type="submit"
