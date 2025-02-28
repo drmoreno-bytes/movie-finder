@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 type SearchProps = {
     title: string;
@@ -13,13 +13,8 @@ export const useSearch = () => {
         page: 1,
     });
     const [error, setError] = useState<string | null>(null);
-    const isFirstInput = useRef(true);
 
     const isSearchValid = (search: string) => {
-        if (isFirstInput.current) {
-            isFirstInput.current = search === '';
-            return false;
-        }
         if (search === '') {
             setError('Cannot search for an empty movie');
             return false;

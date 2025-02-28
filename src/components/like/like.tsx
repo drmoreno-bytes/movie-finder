@@ -17,7 +17,7 @@ export const Like = ({ movie }: Props) => {
             aria-label="Favorite"
             onClick={() => handleLike(movie)}
             className={`${
-                isLiked ? 'bg-red-950' : 'bg-white'
+                isLiked ? 'text-red-600' : 'bg-white'
             } cursor-pointer pointer-events-auto flex justify-center items-center rounded-lg w-35 h-35 shadow-[0_0_60px_rgba(34,_34,_34,_0.25)] hover:bg-gray-400 text-black`}
         />
     );

@@ -1,13 +1,13 @@
-import { MovieDetail } from '@/logic/movies/schema';
+import { Movie } from '@/logic/movies/schema';
 import { BreadCrumb } from 'primereact/breadcrumb';
 import { Rating } from 'primereact/rating';
 
 type Props = {
-    movie: MovieDetail;
+    movie: Movie;
 };
 
 export default function Detail({ movie }: Props) {
-    const ratingValue = +movie.imdbRating / 2;
+    //const ratingValue = +movie?.imdbRating / 2;
 
     return (
         <div className="flex flex-col">
@@ -15,7 +15,7 @@ export default function Detail({ movie }: Props) {
                 model={[{ template: <span>Detail</span> }]}
                 home={{ icon: 'pi pi-home', url: '/' }}
             />
-            <Rating value={ratingValue} readOnly cancel={false} />
+            <Rating value={5} readOnly cancel={false} />
             DETAIL:{movie.title}{' '}
         </div>
     );

@@ -17,11 +17,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }
 
         const res = await getMovieByIdServer(params.data);
+
         if (res.response.toLocaleLowerCase() !== 'true') {
             throw new Error(
                 JSON.stringify({ status: 404, message: 'Not found' })
             );
         }
+
         return {
             props: {
                 movie: res.movie,

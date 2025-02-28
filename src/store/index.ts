@@ -1,14 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, Middleware } from '@reduxjs/toolkit';
 import favoriteMoviesReducer from './favoriteMovies/slice';
 
-const persistanceLocalStorageMiddleware = (store) => (next) => (action) => {
-    const result = next(action);
-    localStorage.setItem(
-        '__redux_favoriteMovies',
-        JSON.stringify(store.getState().favoriteMovies)
-    );
-    return result;
-};
+const persistanceLocalStorageMiddleware: Middleware =
+    (store) => (next) => (action) => {
+        const result = next(action);
+        localStorage.setItem(
+            '__redux_favoriteMovies',
+            JSON.stringify(store.getState().favoriteMovies)
+        );
+        return result;
+    };
 
 export const store = configureStore({
     reducer: {
