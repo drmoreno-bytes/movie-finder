@@ -3,21 +3,25 @@ import Link from 'next/link';
 import { Button } from 'primereact/button';
 
 type Props = {
+    id: string;
     title: string;
     year: string;
     poster: string;
     width: number;
     height: number;
     url: string;
+    onFavoriteClick: (id: string) => void;
 };
 
 export const Thumbnails = ({
+    id,
     url,
     title,
     year,
     poster,
     width = 216,
     height = 324,
+    onFavoriteClick,
 }: Props) => (
     <figure className="relative group">
         <Link href={url}>
@@ -46,7 +50,7 @@ export const Thumbnails = ({
                     rounded
                     text
                     aria-label="Favorite"
-                    onClick={() => console.log('Favorite')}
+                    onClick={() => onFavoriteClick(id)}
                     className="cursor-pointer pointer-events-auto flex justify-center items-center rounded-lg w-35 h-35 shadow-[0_0_60px_rgba(34,_34,_34,_0.25)] bg-white hover:bg-gray-400 text-black"
                 />
             </div>
