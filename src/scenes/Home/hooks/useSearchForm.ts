@@ -6,7 +6,7 @@ import { deepEqual } from 'fast-equals';
 
 export const useSearchForm = () => {
     const { search, setSearch, error, isSearchValid } = useSearch();
-    const { movies, searchMovies, apiStatus } = useMovies();
+    const { movies, searchMovies, apiStatus, pagination } = useMovies();
     const previousSearch = useRef(search);
     const { title, type } = search;
 
@@ -37,9 +37,14 @@ export const useSearchForm = () => {
         setSearch({ ...search, type: event.target.value });
     };
 
+    const handlePagination = (page: number) => {
+        searchMovies({ ...search, page });
+    };
+
     return {
         search,
         setSearch,
+        totalMovies: pagination.total,
         error,
         isSearchValid,
         movies,
@@ -51,5 +56,6 @@ export const useSearchForm = () => {
         handleKeyDown,
         handleChangeTitle,
         handleChangeType,
+        handlePagination,
     };
 };

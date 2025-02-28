@@ -11,10 +11,12 @@ export default function Home() {
         error,
         apiStatus,
         movies,
+        totalMovies,
         handleSubmit,
         handleKeyDown,
         handleChangeTitle,
         handleChangeType,
+        handlePagination,
     } = useSearchForm();
     const { title, type } = search;
 
@@ -61,11 +63,13 @@ export default function Home() {
                 )}
             </header>
             <main>
-                {!error && (
+                {!error && totalMovies > 0 && (
                     <ResultSearch
                         status={apiStatus}
                         movies={movies}
                         keyword={title}
+                        total={totalMovies}
+                        onPageChange={handlePagination}
                     />
                 )}
             </main>

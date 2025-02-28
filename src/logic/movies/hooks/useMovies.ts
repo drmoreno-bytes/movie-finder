@@ -11,6 +11,10 @@ type Props = {
 type ApiStatus = 'idle' | 'loading' | 'error' | 'success';
 
 export const useMovies = () => {
+    const [pagination, setPagination] = useState({
+        page: 1,
+        total: 0,
+    });
     const [movies, setMovies] = useState<Movie[]>([]);
     const [apiStatus, setApiStatus] = useState<ApiStatus>('idle');
 
@@ -24,9 +28,10 @@ export const useMovies = () => {
             });
             if (newMovies.success) {
                 setMovies(newMovies.data.search);
+                setPagination({ page: 1, total: +newMovies.data.totalResults });
                 return;
             }
-
+            setPagination({ page: 1, total: 0 });
             setMovies([]);
         } catch {
             setApiStatus('error');
@@ -35,5 +40,5 @@ export const useMovies = () => {
         }
     }, []);
 
-    return { movies, searchMovies, apiStatus };
+    return { movies, searchMovies, apiStatus, pagination };
 };
