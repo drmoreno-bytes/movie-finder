@@ -1,6 +1,6 @@
 import { Thumbnails } from '@/components/Thumbnails';
 import { Movie } from '@/logic/movies/schema';
-import { Like } from '@/components/like/like';
+import { Like } from '@/components/like';
 
 type Props = {
     movies: Movie[];
