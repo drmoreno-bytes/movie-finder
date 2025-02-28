@@ -15,7 +15,7 @@ export const Pagination = ({ total, onPageChange }: Props) => {
     };
 
     return (
-        <div className="card">
+        <div className="mt-5">
             <Paginator
                 first={first}
                 rows={10}
