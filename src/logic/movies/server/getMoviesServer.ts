@@ -1,18 +1,18 @@
 import { movieResponseSchema } from '../schema';
 
 type Props = {
-    query: string;
+    title: string;
     page?: number;
     type?: string;
 };
 
-export const getMoviesServer = async ({ query, page, type }: Props) => {
+export const getMoviesServer = async ({ title, page, type }: Props) => {
     const API_KEY = process.env.API_KEY;
     const pageParam = page ? `&page=${page}` : '';
     const typeParam = type ? `&type=${type}` : '';
 
     const res = await fetch(
-        `http://www.omdbapi.com?apikey=${API_KEY}&s=${query}${pageParam}${typeParam}`
+        `http://www.omdbapi.com?apikey=${API_KEY}&s=${title}${pageParam}${typeParam}`
     );
 
     const rawResult = await res.json();

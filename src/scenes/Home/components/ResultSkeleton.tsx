@@ -1,13 +1,17 @@
 import { Skeleton } from 'primereact/skeleton';
 
 export const ResultSkeleton = () => {
-    const skeletons = Array.from({ length: 9 }, (_, index) => (
-        <Skeleton key={index} size="16rem" className="mr-2" />
+    const skeletons = Array.from({ length: 12 }, (_, index) => (
+        <li key={index} className="mb-4">
+            <Skeleton size="16rem" />
+        </li>
     ));
 
     return (
-        <div className="grid list-none m-0 p-0 grid-cols-[repeat(auto-fit,minmax(200px,1fr))] w-full gap-20">
-            {skeletons}
+        <div className="flex flex-col">
+            <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
+                {skeletons}
+            </ul>
         </div>
     );
 };

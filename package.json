@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "just-debounce-it": "^3.2.0",
+    "fast-equals": "^5.2.2",
     "next": "15.1.7",
     "primeicons": "^7.0.0",
     "primereact": "^10.9.2",

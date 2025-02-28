@@ -1,6 +1,5 @@
 import { Thumbnails } from '@/components/Thumbnails';
 import { Movie } from '@/logic/movies/schema';
-import Link from 'next/link';
 
 type Props = {
     movies: Movie[];
@@ -8,11 +7,16 @@ type Props = {
 
 const ListOfMovies = ({ movies }: Props) => {
     return (
-        <ul className="grid list-none m-0 p-0 grid-cols-[repeat(auto-fit,minmax(200px,1fr))] w-ful gap-20">
+        <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
             {movies.map((movie: Movie) => (
-                <Link key={movie.id} href={`/detail/${movie.id}`}>
-                    <Thumbnails {...movie} width={250} height={350} />
-                </Link>
+                <li key={movie.id} className="mb-4">
+                    <Thumbnails
+                        url={`/detail/${movie.id}`}
+                        {...movie}
+                        width={216}
+                        height={324}
+                    />
+                </li>
             ))}
         </ul>
     );

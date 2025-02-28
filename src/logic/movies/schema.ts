@@ -46,12 +46,6 @@ const movieDetailSchema = z.object({
     country: z.string(),
     awards: z.string(),
     poster: z.string().url(),
-    ratings: z.array(
-        z.object({
-            source: z.string(),
-            value: z.string(),
-        })
-    ),
     metascore: z.string(),
     imdbRating: z.string(),
     imdbVotes: z.string(),
@@ -81,21 +75,15 @@ export const movieDetailResponseSchema = z
         Country: z.string(),
         Awards: z.string(),
         Poster: z.string().url(),
-        Ratings: z.array(
-            z.object({
-                Source: z.string(),
-                Value: z.string(),
-            })
-        ),
         Metascore: z.string(),
         imdbRating: z.string(),
         imdbVotes: z.string(),
         imdbID: z.string(),
         Type: z.string(),
-        DVD: z.string(),
-        BoxOffice: z.string(),
-        Production: z.string(),
-        Website: z.string(),
+        DVD: z.string().optional(),
+        BoxOffice: z.string().optional(),
+        Production: z.string().optional(),
+        Website: z.string().optional(),
     })
     .transform(({ Response, Error, ...data }) => ({
         response: Response,
@@ -115,19 +103,15 @@ export const movieDetailResponseSchema = z
             country: data.Country,
             awards: data.Awards,
             poster: data.Poster,
-            ratings: data.Ratings.map(({ Source, Value }) => ({
-                source: Source,
-                value: Value,
-            })),
             metascore: data.Metascore,
             imdbRating: data.imdbRating,
             imdbVotes: data.imdbVotes,
             imdbID: data.imdbID,
             type: data.Type,
-            dvd: data.DVD,
-            boxOffice: data.BoxOffice,
-            production: data.Production,
-            website: data.Website,
+            dvd: data.DVD ?? 'N/A',
+            boxOffice: data.BoxOffice ?? 'N/A',
+            production: data.Production ?? 'N/A',
+            website: data.Website ?? 'N/A',
         }),
     }));
 

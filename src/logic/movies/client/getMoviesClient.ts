@@ -14,13 +14,13 @@ export type MovieListWithErrors =
       };
 
 type Props = {
-    query: string;
+    title: string;
     page?: number;
     type?: string;
 };
 
 export const getMoviesClient = async ({
-    query,
+    title,
     page,
     type,
 }: Props): Promise<MovieListWithErrors> => {
@@ -28,7 +28,7 @@ export const getMoviesClient = async ({
         const pageParam = page ? `&page=${page}` : '';
         const typeParam = type ? `&type=${type}` : '';
         const response = await fetch(
-            `/api/getMovies?query=${query}${pageParam}${typeParam}`
+            `/api/getMovies?title=${title}${pageParam}${typeParam}`
         );
 
         if (!response.ok) {

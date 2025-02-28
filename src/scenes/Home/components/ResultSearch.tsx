@@ -12,7 +12,7 @@ type Props = {
 
 export const ResultSearch = ({ status, movies, keyword }: Props) => {
     return (
-        <div className="max-w-5xl mx-auto mt-20 px-5">
+        <div className="max-w-6xl mx-auto mt-20 px-5">
             {status === 'loading' && <ResultSkeleton />}
             {status === 'success' && (
                 <div className="flex flex-col">

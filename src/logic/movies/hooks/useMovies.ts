@@ -1,26 +1,27 @@
-import { useRef, useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { Movie } from '../schema';
 import { getMoviesClient } from '../client/getMoviesClient';
-import debounce from 'just-debounce-it';
 
 type Props = {
-    search: string;
+    title: string;
+    type: string;
+    page: number;
 };
 
 type ApiStatus = 'idle' | 'loading' | 'error' | 'success';
 
-export const useMovies = ({ search }: Props) => {
+export const useMovies = () => {
     const [movies, setMovies] = useState<Movie[]>([]);
     const [apiStatus, setApiStatus] = useState<ApiStatus>('idle');
-    const previousSearch = useRef(search);
 
-    const searchMovies = useCallback(async ({ search }: { search: string }) => {
-        if (search === previousSearch.current) return;
-
+    const searchMovies = useCallback(async ({ title, type, page }: Props) => {
         try {
             setApiStatus('loading');
-            previousSearch.current = search;
-            const newMovies = await getMoviesClient({ query: search });
+            const newMovies = await getMoviesClient({
+                title,
+                type,
+                page,
+            });
             if (newMovies.success) {
                 setMovies(newMovies.data.search);
                 return;
@@ -34,12 +35,5 @@ export const useMovies = ({ search }: Props) => {
         }
     }, []);
 
-    const debouncedGetMovies = useCallback(
-        debounce((search: string) => {
-            searchMovies({ search });
-        }, 300),
-        [searchMovies]
-    );
-
-    return { movies, searchMovies, apiStatus, debouncedGetMovies };
+    return { movies, searchMovies, apiStatus };
 };

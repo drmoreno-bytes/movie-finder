@@ -5,8 +5,8 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
 
 const paramsSchema = z.object({
-    query: z.string(),
-    page: z.number().optional().default(1),
+    title: z.string(),
+    page: z.coerce.number().optional(),
     type: z.string().optional(),
 });
 

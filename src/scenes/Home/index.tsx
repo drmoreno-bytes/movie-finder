@@ -1,31 +1,21 @@
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { useMovies } from '@/logic/movies/hooks/useMovies';
 import { ResultSearch } from './components/ResultSearch';
-import { useSearch } from './hooks/useSearch';
+import { Dropdown } from 'primereact/dropdown';
+import { useSearchForm } from './hooks/useSearchForm';
 
 export default function Home() {
-    const { search, setSearch, error, isSearchValid } = useSearch();
-    const { movies, searchMovies, apiStatus, debouncedGetMovies } = useMovies({
+    const {
         search,
-    });
-
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        if (!isSearchValid(search)) {
-            return;
-        }
-        searchMovies({ search });
-    };
-
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const newSearch = event.target.value;
-        setSearch(newSearch);
-        if (!isSearchValid(newSearch)) {
-            return;
-        }
-        debouncedGetMovies(newSearch);
-    };
+        error,
+        apiStatus,
+        movies,
+        handleSubmit,
+        handleKeyDown,
+        handleChangeTitle,
+        handleChangeType,
+    } = useSearchForm();
+    const { title, type } = search;
 
     return (
         <div className="flex flex-col">
@@ -39,10 +29,20 @@ export default function Home() {
                 <form className="pt-5" onSubmit={handleSubmit}>
                     <InputText
                         type="search"
-                        onChange={handleChange}
-                        value={search}
+                        onKeyDown={handleKeyDown}
+                        onChange={handleChangeTitle}
+                        value={title}
                         name="query"
                         placeholder="Search for a movie"
+                        className="w-96"
+                    />
+                    <Dropdown
+                        value={type}
+                        onChange={handleChangeType}
+                        options={['movie', 'series']}
+                        optionLabel="name"
+                        placeholder="Select a type"
+                        className="w-36"
                     />
                     <Button
                         type="submit"
@@ -62,7 +62,7 @@ export default function Home() {
                     <ResultSearch
                         status={apiStatus}
                         movies={movies}
-                        keyword={search}
+                        keyword={title}
                     />
                 )}
             </main>

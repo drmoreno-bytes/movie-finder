@@ -1,7 +1,17 @@
 import { useState, useRef } from 'react';
 
+type SearchProps = {
+    title: string;
+    type: string;
+    page: number;
+};
+
 export const useSearch = () => {
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState<SearchProps>({
+        title: '',
+        type: '',
+        page: 1,
+    });
     const [error, setError] = useState<string | null>(null);
     const isFirstInput = useRef(true);
 
