@@ -33,7 +33,7 @@ export const Thumbnails = ({
                 />
             ) : (
                 <Image
-                    src="/no-image-available.svg"
+                    src="/images/no-image-available.svg"
                     alt="not found"
                     width={width}
                     height={height}

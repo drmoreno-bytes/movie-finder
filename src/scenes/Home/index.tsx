@@ -4,8 +4,18 @@ import { MovieBadge } from './components/MovieBadge';
 import { SearchForm } from './components/SearchForm';
 import { WelcomeMessage } from './components/WelcomeMessage';
 import { ErrorMessage } from './components/ErrorMessage';
+import { BackgroundCover } from '@/components/BackgroundCover';
 
-export default function Home() {
+type Props = {
+    backgroundCover: {
+        src: string;
+        alt: string;
+        width: number;
+        height: number;
+    };
+};
+
+export default function Home({ backgroundCover }: Props) {
     const {
         search,
         error,
@@ -21,31 +31,41 @@ export default function Home() {
     const { title, type } = search;
 
     return (
-        <div className="flex flex-col">
-            <header className="flex flex-col gap-2 items-center text-center relative max-w-[800px] mx-auto xl:pt-40 px-5 pt-8">
-                <WelcomeMessage />
-                <SearchForm
-                    title={title}
-                    type={type}
-                    onSubmit={handleSubmit}
-                    onKeyDown={handleKeyDown}
-                    onChangeTitle={handleChangeTitle}
-                    onChangeType={handleChangeType}
-                />
-                <MovieBadge />
-                <ErrorMessage description={error} />
-            </header>
-            <main>
-                {!error && (
-                    <ResultSearch
-                        status={apiStatus}
-                        movies={movies}
-                        keyword={title}
-                        total={totalMovies}
-                        onPageChange={handlePagination}
-                    />
-                )}
-            </main>
+        <div className="relative">
+            <BackgroundCover
+                src={backgroundCover.src}
+                alt={backgroundCover.alt}
+                width={backgroundCover.width}
+                height={backgroundCover.height}
+                className="block absolute w-full h-full max-h-[980px] opacity-80 after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-gradient-to-t after:from-[#0D0D0D] after:to-transparent after:content-[''] top-0"
+            >
+                <div className="flex flex-col">
+                    <header className="flex flex-col gap-2 items-center text-center relative max-w-[800px] mx-auto xl:pt-40 px-5 pt-8">
+                        <WelcomeMessage />
+                        <SearchForm
+                            title={title}
+                            type={type}
+                            onSubmit={handleSubmit}
+                            onKeyDown={handleKeyDown}
+                            onChangeTitle={handleChangeTitle}
+                            onChangeType={handleChangeType}
+                        />
+                        <MovieBadge />
+                        <ErrorMessage description={error} />
+                    </header>
+                </div>
+                <main className="overflow-hidden">
+                    {!error && (
+                        <ResultSearch
+                            status={apiStatus}
+                            movies={movies}
+                            keyword={title}
+                            total={totalMovies}
+                            onPageChange={handlePagination}
+                        />
+                    )}
+                </main>
+            </BackgroundCover>
         </div>
     );
 }

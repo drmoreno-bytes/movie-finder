@@ -1,4 +1,5 @@
 import { Skeleton } from 'primereact/skeleton';
+import { SearchInfoContent } from './SearchInfoContent';
 
 export const ResultSkeleton = () => {
     const skeletons = Array.from({ length: 12 }, (_, index) => (
@@ -9,6 +10,7 @@ export const ResultSkeleton = () => {
 
     return (
         <div className="flex flex-col">
+            <SearchInfoContent keyword="" total={0} />
             <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
                 {skeletons}
             </ul>

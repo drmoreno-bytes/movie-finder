@@ -14,21 +14,6 @@ type Props = {
     onPageChange: (page: number) => void;
 };
 
-const SearchInfoContent = ({
-    keyword,
-    total,
-}: {
-    keyword: string;
-    total: number;
-}) => (
-    <>
-        <p className="text-2xl py-5">
-            Search results of <span className="text-[#d80286]">{keyword}</span>
-        </p>
-        <p>Movies: {total}</p>
-    </>
-);
-
 export const ResultSearch = ({
     status,
     movies,
@@ -41,9 +26,10 @@ export const ResultSearch = ({
     return (
         <div className="max-w-6xl mx-auto mt-20 px-5">
             <div className="flex flex-col">
-                <SearchInfoContent keyword={keyword} total={total} />
                 {status === 'loading' && <ResultSkeleton />}
-                {status === 'success' && <Movies movies={movies} />}
+                {status === 'success' && (
+                    <Movies movies={movies} keyword={keyword} />
+                )}
                 {status === 'error' && <EmptyResult />}
             </div>
             {total > itemsByPage && (
