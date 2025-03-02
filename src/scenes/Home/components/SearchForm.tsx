@@ -20,7 +20,10 @@ export const SearchForm = ({
     onChangeType,
 }: Props) => {
     return (
-        <form className="pt-5" onSubmit={onSubmit}>
+        <form
+            className="flex gap-3 py-1 pr-5 pl-1 bg-white overflow-hidden m-5 rounded-full"
+            onSubmit={onSubmit}
+        >
             <InputText
                 type="search"
                 onKeyDown={onKeyDown}
@@ -28,15 +31,18 @@ export const SearchForm = ({
                 value={title}
                 name="query"
                 placeholder="Search for a movie"
-                className="w-96"
+                className="w-96 rounded-3xl border-none"
             />
             <Dropdown
                 value={type}
                 onChange={onChangeType}
-                options={['movie', 'series']}
+                options={[
+                    { value: 'movie', name: 'Movie' },
+                    { value: 'series', name: 'Series' },
+                ]}
                 optionLabel="name"
                 placeholder="Select a type"
-                className="w-36"
+                className="w-36 border-none first-letter:uppercase"
                 name="type"
             />
             <Button type="submit" label="Search" outlined />
