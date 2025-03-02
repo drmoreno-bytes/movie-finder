@@ -25,7 +25,9 @@ export const ResultSearch = ({
         <div className="max-w-6xl mx-auto mt-5 px-5">
             <div className="flex flex-col">
                 {status === 'loading' && <ResultSkeleton />}
-                {status === 'success' && <Movies movies={movies} />}
+                {status === 'success' && (
+                    <Movies movies={movies} total={total} />
+                )}
                 {status === 'error' && <EmptyResult />}
             </div>
             {total > itemsByPage && (

@@ -32,10 +32,10 @@ const ListOfMovies = ({ movies, total }: ListOfMoviesProps) => {
 
 type Props = {
     movies: Movie[];
+    total: number;
 };
 
-export const Movies = ({ movies }: Props) => {
-    const total = movies?.length ?? 0;
+export const Movies = ({ movies, total }: Props) => {
     const hasMovies = movies?.length > 0;
     return hasMovies ? (
         <ListOfMovies movies={movies} total={total} />
