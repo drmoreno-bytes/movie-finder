@@ -48,8 +48,8 @@ export const Thumbnails = ({
                 </div>
             )}
             <div className="absolute bottom-0 p-5">
-                <p className="text-lg text-white">{title}</p>
-                <p className="text-md text-white">{year}</p>
+                <p className="text-sm text-white">{year}</p>
+                <p className="text-lg text-white line-clamp-2">{title}</p>
             </div>
         </figcaption>
     </figure>
