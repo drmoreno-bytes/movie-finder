@@ -43,7 +43,7 @@ export const Thumbnails = ({
         </Link>
         <figcaption className="pointer-events-none rounded-md absolute inset-0 opacity-0 transition-opacity [background:linear-gradient(180deg,rgba(0,0,0,0.1)_0%,rgba(0,0,0,0.4)_100%)]  group-hover:opacity-100">
             {actions && (
-                <div className="absolute bottom-15 transition-all p-5">
+                <div className="absolute bottom-15 transition-all p-1">
                     {actions}
                 </div>
             )}

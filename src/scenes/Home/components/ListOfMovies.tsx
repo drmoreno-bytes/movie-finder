@@ -6,14 +6,13 @@ import { SearchInfoContent } from './SearchInfoContent';
 
 type ListOfMoviesProps = {
     movies: Movie[];
-    keyword: string;
     total: number;
 };
 
-const ListOfMovies = ({ movies, keyword, total }: ListOfMoviesProps) => {
+const ListOfMovies = ({ movies, total }: ListOfMoviesProps) => {
     return (
         <>
-            <SearchInfoContent keyword={keyword} total={total} />
+            <SearchInfoContent total={total} />
             <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
                 {movies.map((movie: Movie) => (
                     <li key={movie.id} className="mb-4">
@@ -33,14 +32,13 @@ const ListOfMovies = ({ movies, keyword, total }: ListOfMoviesProps) => {
 
 type Props = {
     movies: Movie[];
-    keyword: string;
 };
 
-export const Movies = ({ movies, keyword }: Props) => {
+export const Movies = ({ movies }: Props) => {
     const total = movies?.length ?? 0;
     const hasMovies = movies?.length > 0;
     return hasMovies ? (
-        <ListOfMovies movies={movies} total={total} keyword={keyword} />
+        <ListOfMovies movies={movies} total={total} />
     ) : (
         <EmptyResult />
     );

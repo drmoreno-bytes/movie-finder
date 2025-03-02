@@ -10,7 +10,7 @@ export const ResultSkeleton = () => {
 
     return (
         <div className="flex flex-col">
-            <SearchInfoContent keyword="" total={0} />
+            <SearchInfoContent total={0} />
             <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
                 {skeletons}
             </ul>

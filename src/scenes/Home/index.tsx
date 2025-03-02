@@ -59,7 +59,6 @@ export default function Home({ backgroundCover }: Props) {
                         <ResultSearch
                             status={apiStatus}
                             movies={movies}
-                            keyword={title}
                             total={totalMovies}
                             onPageChange={handlePagination}
                         />

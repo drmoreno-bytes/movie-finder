@@ -9,7 +9,6 @@ type Status = 'idle' | 'loading' | 'error' | 'success';
 type Props = {
     status: Status;
     movies: Movie[];
-    keyword: string;
     total: number;
     onPageChange: (page: number) => void;
 };
@@ -17,19 +16,16 @@ type Props = {
 export const ResultSearch = ({
     status,
     movies,
-    keyword,
     onPageChange,
     total,
 }: Props) => {
     const itemsByPage = 10;
 
     return (
-        <div className="max-w-6xl mx-auto mt-20 px-5">
+        <div className="max-w-6xl mx-auto mt-5 px-5">
             <div className="flex flex-col">
                 {status === 'loading' && <ResultSkeleton />}
-                {status === 'success' && (
-                    <Movies movies={movies} keyword={keyword} />
-                )}
+                {status === 'success' && <Movies movies={movies} />}
                 {status === 'error' && <EmptyResult />}
             </div>
             {total > itemsByPage && (
