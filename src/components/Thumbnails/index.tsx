@@ -22,6 +22,11 @@ export const Thumbnails = ({
     actions,
 }: Props) => (
     <figure className="relative group">
+        {actions && (
+            <div className="absolute top-0 p-1 right transition-all">
+                {actions}
+            </div>
+        )}
         <Link href={url}>
             {poster !== 'N/A' ? (
                 <Image
@@ -42,11 +47,6 @@ export const Thumbnails = ({
             )}
         </Link>
         <figcaption className="pointer-events-none rounded-md absolute inset-0 opacity-0 transition-opacity [background:linear-gradient(180deg,rgba(0,0,0,0.1)_0%,rgba(0,0,0,0.4)_100%)]  group-hover:opacity-100">
-            {actions && (
-                <div className="absolute bottom-15 transition-all p-1">
-                    {actions}
-                </div>
-            )}
             <div className="absolute bottom-0 p-5">
                 <p className="text-sm text-white">{year}</p>
                 <p className="text-lg text-white line-clamp-2">{title}</p>
