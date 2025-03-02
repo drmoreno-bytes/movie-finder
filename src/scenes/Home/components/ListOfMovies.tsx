@@ -1,6 +1,7 @@
 import { Thumbnails } from '@/components/Thumbnails';
 import { Movie } from '@/logic/movies/schema';
 import { Like } from '@/components/like';
+import { EmptyResult } from './EmptyResult';
 
 type Props = {
     movies: Movie[];
@@ -24,13 +25,7 @@ const ListOfMovies = ({ movies }: Props) => {
     );
 };
 
-const NoMoviesResults = () => (
-    <p className="text-[#da2f68] text-xl text-center mt-10 w-full">
-        No Results found for keyword. Try another One
-    </p>
-);
-
 export const Movies = ({ movies }: Props) => {
     const hasMovies = movies?.length > 0;
-    return hasMovies ? <ListOfMovies movies={movies} /> : <NoMoviesResults />;
+    return hasMovies ? <ListOfMovies movies={movies} /> : <EmptyResult />;
 };

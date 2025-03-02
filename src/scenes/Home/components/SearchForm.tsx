@@ -39,12 +39,7 @@ export const SearchForm = ({
                 className="w-36"
                 name="type"
             />
-            <Button
-                type="submit"
-                label="Search"
-                outlined
-                className="text-[#da2f68] border-[#da2f68] ml-2 hover:bg-red-100"
-            />
+            <Button type="submit" label="Search" outlined />
         </form>
     );
 };

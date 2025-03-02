@@ -36,7 +36,7 @@ export default function Home() {
                 <ErrorMessage description={error} />
             </header>
             <main>
-                {!error && totalMovies > 0 && (
+                {!error && (
                     <ResultSearch
                         status={apiStatus}
                         movies={movies}
