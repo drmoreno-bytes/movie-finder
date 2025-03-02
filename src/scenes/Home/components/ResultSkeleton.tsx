@@ -1,5 +1,5 @@
+import { SearchInfoContent } from '@/components/ListOfMovies/SearchInfoContent';
 import { Skeleton } from 'primereact/skeleton';
-import { SearchInfoContent } from './SearchInfoContent';
 
 export const ResultSkeleton = () => {
     const skeletons = Array.from({ length: 12 }, (_, index) => (

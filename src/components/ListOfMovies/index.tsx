@@ -1,7 +1,6 @@
 import { Thumbnails } from '@/components/Thumbnails';
 import { Movie } from '@/logic/movies/schema';
 import { Like } from '@/components/like';
-import { EmptyResult } from './EmptyResult';
 import { SearchInfoContent } from './SearchInfoContent';
 
 type ListOfMoviesProps = {
@@ -9,7 +8,7 @@ type ListOfMoviesProps = {
     total: number;
 };
 
-const ListOfMovies = ({ movies, total }: ListOfMoviesProps) => {
+export const ListOfMovies = ({ movies, total }: ListOfMoviesProps) => {
     return (
         <>
             <SearchInfoContent total={total} />
@@ -27,19 +26,5 @@ const ListOfMovies = ({ movies, total }: ListOfMoviesProps) => {
                 ))}
             </ul>
         </>
-    );
-};
-
-type Props = {
-    movies: Movie[];
-    total: number;
-};
-
-export const Movies = ({ movies, total }: Props) => {
-    const hasMovies = movies?.length > 0;
-    return hasMovies ? (
-        <ListOfMovies movies={movies} total={total} />
-    ) : (
-        <EmptyResult />
     );
 };

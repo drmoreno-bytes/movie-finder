@@ -1,10 +1,11 @@
 import { ResultSearch } from './components/ResultSearch';
 import { useSearchForm } from './hooks/useSearchForm';
-import { MovieBadge } from './components/MovieBadge';
+
 import { SearchForm } from './components/SearchForm';
 import { WelcomeMessage } from './components/WelcomeMessage';
 import { ErrorMessage } from './components/ErrorMessage';
 import { BackgroundCover } from '@/components/BackgroundCover';
+import { MovieBadge } from '@/components/MovieBadge';
 
 type Props = {
     backgroundCover: {
@@ -50,7 +51,7 @@ export default function Home({ backgroundCover }: Props) {
                             onChangeTitle={handleChangeTitle}
                             onChangeType={handleChangeType}
                         />
-                        <MovieBadge />
+                        <MovieBadge text="Favorite movies" />
                         <ErrorMessage description={error} />
                     </header>
                 </div>

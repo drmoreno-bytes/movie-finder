@@ -3,10 +3,11 @@ import { Badge } from 'primereact/badge';
 import { useEffect, useState } from 'react';
 
 type Props = {
+    text: string;
     className?: string;
 };
 
-export const MovieBadge = ({ className }: Props) => {
+export const MovieBadge = ({ text, className }: Props) => {
     const [isClient, setIsClient] = useState(false);
     const favoriteMovies = useAppSelector((state) => state.favoriteMovies);
 
@@ -24,7 +25,7 @@ export const MovieBadge = ({ className }: Props) => {
                 className={`mr-1 ${className}`}
                 value={favoriteMovies?.length ?? 0}
             ></Badge>
-            Favorite movies
+            {text}
         </span>
     );
 };

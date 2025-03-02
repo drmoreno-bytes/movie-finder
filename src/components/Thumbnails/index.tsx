@@ -21,7 +21,7 @@ export const Thumbnails = ({
     height = 324,
     actions,
 }: Props) => (
-    <figure className="relative group">
+    <figure className="relative group cursor-pointer">
         {actions && (
             <div className="absolute top-0 p-1 right transition-all">
                 {actions}

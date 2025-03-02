@@ -1,8 +1,8 @@
 import { Movie } from '@/logic/movies/schema';
-import { Movies } from './ListOfMovies';
 import { ResultSkeleton } from './ResultSkeleton';
 import { EmptyResult } from './EmptyResult';
 import { Pagination } from '@/components/Pagination';
+import { Movies } from './Movies';
 
 type Status = 'idle' | 'loading' | 'error' | 'success';
 

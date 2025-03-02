@@ -7,7 +7,6 @@ describe('ResultSearch Component', () => {
             <ResultSearch
                 status="success"
                 movies={[]}
-                keyword="Tests"
                 total={0}
                 onPageChange={() => {}}
             />
