@@ -17,8 +17,8 @@ export const Like = ({ movie }: Props) => {
             text
             aria-label="Favorite"
             onClick={() => handleLike(movie)}
-            className={`text-red-600
-            } cursor-pointer pointer-events-auto flex justify-center items-center rounded-lg w-8 h-8 shadow-[0_0_60px_rgba(34,_34,_34,_0.25)] hover:bg-gray-400 bg-white/30 text-black`}
+            className={`text-red-500
+            } cursor-pointer pointer-events-auto flex justify-center items-center rounded-lg w-8 h-8 shadow-[0_0_60px_rgba(34,_34,_34,_0.25)] hover:bg-gray-400 bg-transparent/30 text-black`}
         />
     );
 };
