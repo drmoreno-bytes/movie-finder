@@ -21,7 +21,7 @@ export const SearchForm = ({
 }: Props) => {
     return (
         <form
-            className="flex gap-3 py-1 pr-1 pl-1 bg-white overflow-hidden m-5 rounded-lg"
+            className="flex flex-col gap-3 py-1 px-1 bg-white overflow-hidden m-5 rounded-lg md:flex-row"
             onSubmit={onSubmit}
         >
             <InputText
@@ -31,7 +31,7 @@ export const SearchForm = ({
                 value={title}
                 name="query"
                 placeholder="Search for a movie"
-                className="w-96 rounded-3xl border-none"
+                className="w-full md:w-96 rounded-3xl border-none"
             />
             <Dropdown
                 value={type}
