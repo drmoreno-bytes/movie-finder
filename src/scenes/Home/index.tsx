@@ -55,7 +55,7 @@ export default function Home({ backgroundCover }: Props) {
                         <ErrorMessage description={error} />
                     </header>
                 </div>
-                <main className="overflow-hidden">
+                <main className="overflow-hidden relative">
                     {!error && (
                         <ResultSearch
                             status={apiStatus}
