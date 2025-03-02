@@ -21,7 +21,7 @@ export const SearchForm = ({
 }: Props) => {
     return (
         <form
-            className="flex gap-3 py-1 pr-5 pl-1 bg-white overflow-hidden m-5 rounded-full"
+            className="flex gap-3 py-1 pr-1 pl-1 bg-white overflow-hidden m-5 rounded-lg"
             onSubmit={onSubmit}
         >
             <InputText

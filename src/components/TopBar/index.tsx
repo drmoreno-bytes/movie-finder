@@ -3,9 +3,5 @@ import { Menubar } from 'primereact/menubar';
 import { MENU_ITEMS } from './config';
 
 export const TopBar = () => {
-    return (
-        <div className="card">
-            <Menubar model={MENU_ITEMS} />
-        </div>
-    );
+    return <Menubar model={MENU_ITEMS} className="rounded-none bg-white" />;
 };
