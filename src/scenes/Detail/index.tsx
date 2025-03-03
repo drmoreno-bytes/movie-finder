@@ -25,11 +25,12 @@ export default function Detail({ movie }: Props) {
                     <div className="flex flex-col gap-6 sm:flex-row">
                         <div className="w-[432] h-[648] mx-auto sm:mx-0">
                             <Thumbnails
-                                url={`/detail/${movie.id}`}
                                 {...movie}
                                 width={432}
                                 height={648}
                                 actions={<Like movie={movie} />}
+                                className="pointer-events-none"
+                                showDetails={false}
                             />
                         </div>
                         <div className="flex flex-col gap-5">
