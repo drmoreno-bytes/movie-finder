@@ -22,7 +22,7 @@ export const ResultSearch = ({
     const itemsByPage = 10;
 
     return (
-        <div className="max-w-6xl mx-auto mt-5 px-5">
+        <div className="max-w-6xl mx-auto my-5 px-5">
             <div className="flex flex-col">
                 {status === 'loading' && <ResultSkeleton />}
                 {status === 'success' && (
