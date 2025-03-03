@@ -1,6 +1,6 @@
 import { Movie } from '@/logic/movies/schema';
 import { EmptyResult } from './EmptyResult';
-import { ListOfMovies } from '../../../components/ListOfMovies';
+import { ListOfMovies } from '@/components/ListOfMovies';
 
 type Props = {
     movies: Movie[];
