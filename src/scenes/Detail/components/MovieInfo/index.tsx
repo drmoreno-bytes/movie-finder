@@ -33,7 +33,7 @@ export const MovieInfo = ({
             <h2 className="uppercase bold sm:text-4xl">{title}</h2>
             <Badge className="max-w-20 uppercase" value={type} />
             <Rating value={ratingNumber} readOnly cancel={false} />
-            <p className="text-xl">{plot}</p>
+            <p className="text-lg sm:text-xl">{plot}</p>
             <p className="text-sm">{released}</p>
             <MovieDescription label="Votes" value={votes} />
             <MovieDescription label="Genre" value={genre} />
