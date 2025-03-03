@@ -10,7 +10,7 @@ type ListOfMoviesProps = {
 
 export const ListOfMovies = ({ movies, total }: ListOfMoviesProps) => {
     return (
-        <>
+        <div className="px-5 lg:px-0">
             <SearchInfoContent total={total} />
             <ul className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
                 {movies.map((movie: Movie) => (
@@ -25,6 +25,6 @@ export const ListOfMovies = ({ movies, total }: ListOfMoviesProps) => {
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     );
 };
