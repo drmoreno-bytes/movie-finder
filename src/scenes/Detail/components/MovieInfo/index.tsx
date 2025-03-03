@@ -4,6 +4,7 @@ import { parseNumberString } from '@/utils/parseNumberString';
 import { Badge } from 'primereact/badge';
 import { Knob } from 'primereact/knob';
 import { Rating } from 'primereact/rating';
+import { useState, useEffect } from 'react';
 
 const MovieDescription = ({
     label,
@@ -28,8 +29,8 @@ export const MovieInfo = ({
     language,
     genre,
 }: MovieDetail) => {
-    const votesNumber = parseNumberString(votes);
     const ratingNumber = parseDecimalString(rating);
+
     return (
         <div className="flex flex-col gap-5 mb-5">
             <h2 className="uppercase bold sm:text-4xl">{title}</h2>
@@ -37,9 +38,7 @@ export const MovieInfo = ({
             <Rating value={ratingNumber} readOnly cancel={false} />
             <p className="text-xl">{plot}</p>
             <p className="text-sm">{released}</p>
-            <div className="text-sm flex gap-5 items-center text-gray-400">
-                Votes: <Knob value={votesNumber} readOnly max={999999} />
-            </div>
+            <MovieDescription label="Votes" value={votes} />
             <MovieDescription label="Genre" value={genre} />
             <MovieDescription label="Language" value={language} />
             <MovieDescription label="Actors" value={actors} />

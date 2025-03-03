@@ -10,11 +10,12 @@ type Props = {
 
 export default function Detail({ movie }: Props) {
     const { title, poster } = movie;
+    const cover = poster !== 'N/A' ? poster : '/images/no-image-available.svg';
 
     return (
         <div className="overflow-hidden relative">
             <BackgroundCover
-                src={poster}
+                src={cover}
                 alt={title}
                 width={2048}
                 height={1152}
