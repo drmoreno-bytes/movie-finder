@@ -41,7 +41,7 @@ export default function Home({ backgroundCover }: Props) {
                 className="block absolute w-full h-full max-h-[980px] opacity-80 after:absolute after:left-0 after:top-0 after:h-full after:w-full after:bg-gradient-to-t after:from-[#0D0D0D] after:to-transparent after:content-[''] top-0 after:pointer-events-none"
             >
                 <div className="flex flex-col">
-                    <header className="flex flex-col gap-2 items-center text-center relative max-w-[800px] mx-auto xl:py-40 md:px-5 pt-8">
+                    <header className="flex flex-col gap-2 items-center text-center relative max-w-[800px] mx-auto md:py-40 md:px-5 lg:pt-52 pt-8">
                         <WelcomeMessage />
                         <SearchForm
                             title={title}

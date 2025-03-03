@@ -24,7 +24,7 @@ export const Pagination = ({ total, onPageChange }: Props) => {
                 template={{
                     layout: 'PrevPageLink CurrentPageReport NextPageLink',
                 }}
-                className="bg-[#0d0d0d] text-white"
+                className="bg-white/0 text-white"
             />
         </div>
     );
