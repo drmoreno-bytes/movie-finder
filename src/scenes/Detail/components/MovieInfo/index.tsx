@@ -1,10 +1,7 @@
 import { MovieDetail } from '@/logic/movies/schema';
 import { parseDecimalString } from '@/utils/parseDecimalString';
-import { parseNumberString } from '@/utils/parseNumberString';
 import { Badge } from 'primereact/badge';
-import { Knob } from 'primereact/knob';
 import { Rating } from 'primereact/rating';
-import { useState, useEffect } from 'react';
 
 const MovieDescription = ({
     label,
