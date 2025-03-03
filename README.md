@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Movie Finder
+
+Movie Finder is a movie search application built with [Next.js](https://nextjs.org). It allows users to search for movies and save their favorite movies.
 
 ## Getting Started
 
@@ -16,20 +18,52 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Features
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+-   **Next.js**: The React framework for production.
+-   **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+-   **PrimeReact**: A rich set of open-source UI components for React.
+-   **Redux Toolkit**: The official, recommended way to write Redux logic.
+-   **Zod**: TypeScript-first schema declaration and validation library.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+-   **Home**: The main page where users can search for movies.
+-   **Detail**: A page that shows detailed information about a selected movie.
+-   **Favorites**: A page where users can view and manage their favorite movies.
+
+## Running Tests
+
+This project uses [Jest](https://jestjs.io) for testing. To run the tests, use the following command:
+
+```bash
+npm test
+# or
+yarn test
+# or
+pnpm test
+# or
+bun test
+```
+
+You can also run tests in watch mode during development:
+
+```bash
+npm run test:watch
+# or
+yarn test:watch
+# or
+pnpm test:watch
+# or
+bun test:watch
+```
 
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+-   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+-   [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
