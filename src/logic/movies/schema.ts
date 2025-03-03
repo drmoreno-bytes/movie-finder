@@ -19,6 +19,51 @@ const movieSchema = baseMovieSchema.transform(
     })
 );
 
+export const movieSchemaDetail = baseMovieSchema
+    .extend({
+        Plot: z.string(),
+        Released: z.string(),
+        Runtime: z.string(),
+        Language: z.string(),
+        imdbRating: z.string(),
+        imdbVotes: z.string(),
+        Actors: z.string(),
+        Genre: z.string(),
+    })
+    .transform(
+        ({
+            Title,
+            Year,
+            imdbID,
+            Type,
+            Poster,
+            imdbRating,
+            imdbVotes,
+            Plot,
+            Released,
+            Runtime,
+            Language,
+            Actors,
+            Genre,
+            ...rest
+        }) => ({
+            id: imdbID,
+            title: Title,
+            year: Year,
+            type: Type,
+            poster: Poster,
+            rating: imdbRating,
+            votes: imdbVotes,
+            plot: Plot,
+            released: Released,
+            runtime: Runtime,
+            language: Language,
+            actors: Actors,
+            genre: Genre,
+            ...rest,
+        })
+    );
+
 export const movieResponseSchema = z
     .object({
         Response: z.string(),
@@ -37,9 +82,34 @@ export const movieDetailResponseSchema = baseMovieSchema
     .extend({
         Response: z.string(),
         Error: z.string().optional().nullable(),
+        Plot: z.string(),
+        Released: z.string(),
+        Runtime: z.string(),
+        Language: z.string(),
+        imdbRating: z.string(),
+        imdbVotes: z.string(),
+        Actors: z.string(),
+        Genre: z.string(),
     })
     .transform(
-        ({ Response, Error, Title, Year, imdbID, Type, Poster, ...rest }) => ({
+        ({
+            Response,
+            Error,
+            Title,
+            Year,
+            imdbID,
+            Type,
+            Poster,
+            imdbRating,
+            imdbVotes,
+            Plot,
+            Released,
+            Runtime,
+            Language,
+            Actors,
+            Genre,
+            ...rest
+        }) => ({
             response: Response,
             error: Error,
             movie: {
@@ -48,6 +118,14 @@ export const movieDetailResponseSchema = baseMovieSchema
                 year: Year,
                 type: Type,
                 poster: Poster,
+                rating: imdbRating,
+                votes: imdbVotes,
+                plot: Plot,
+                released: Released,
+                runtime: Runtime,
+                language: Language,
+                actors: Actors,
+                genre: Genre,
             },
             ...rest,
         })
@@ -56,3 +134,4 @@ export const movieDetailResponseSchema = baseMovieSchema
 export type MovieOfListResponse = z.infer<typeof movieResponseSchema>;
 export type MovieDetailResponse = z.infer<typeof movieDetailResponseSchema>;
 export type Movie = z.infer<typeof movieSchema>;
+export type MovieDetail = z.infer<typeof movieSchemaDetail>;

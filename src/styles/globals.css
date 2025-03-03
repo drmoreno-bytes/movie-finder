@@ -5,6 +5,7 @@
 :root {
     --background: #0d0d0d;
     --foreground: #ffffff;
+    --text-color-secondary: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,4 +19,27 @@ body {
     color: var(--foreground);
     background: var(--background);
     font-family: Arial, Helvetica, sans-serif;
+}
+
+[data-pc-name='rating'] > [data-pc-section='item'] {
+    box-shadow: none;
+}
+
+[data-pc-name='paginator'] {
+    background-color: transparent;
+}
+
+@media (min-width: 640px) {
+    [data-pc-section='content'] [data-pc-section='icon'] {
+        color: #ffffff;
+    }
+
+    [data-pc-section='content'] [data-pc-section='label'] {
+        color: #ffffff;
+    }
+
+    [data-pc-section='content']:hover {
+        background-color: #808080; /* Gris */
+        border-radius: 5px;
+    }
 }
